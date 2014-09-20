@@ -26,7 +26,8 @@ public class MyActivity extends ActionBarActivity {
 
     TextView todays_date, hours_today, out_today, in_today, total_hours;
     TimePicker time_out_pick, time_in_pick;
-    String punchin_time, punchout_time, hours, date, total;
+    String punchin_time, punchout_time, hours, date;
+    Double total;
     SimpleDateFormat formatter;
     Calendar current_date;
     Integer timestampCount;
@@ -116,8 +117,8 @@ public class MyActivity extends ActionBarActivity {
         calcbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                total = calculateTotal(Timestamps);
-                total_hours.setText(total);
+                total = calculateTotal();
+                total_hours.setText(total.toString());
             }
         });
 
@@ -180,11 +181,14 @@ public class MyActivity extends ActionBarActivity {
         return Double.toString(total);
     }
 
-    public String calculateTotal(List<Timestamp> Timestamps) {
-        String total_time="";
-        double time_interval;
+    public Double calculateTotal() {
+        double total_time=0.0;
+        String time_interval;
         for (int i=0; i<Timestamps.size(); i++) {
-            total_time += Timestamps.get(i).get_hours() + " ";
+            time_interval = Timestamps.get(i).get_hours();
+            time_interval = time_interval.substring(1);
+            String[] time_list = time_interval.split(" ");
+            total_time += Double.parseDouble(time_list[0]);
         }
         return total_time;
     }
