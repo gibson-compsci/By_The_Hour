@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ public class MyActivity extends ActionBarActivity {
     SimpleDateFormat formatter;
     Calendar current_date;
     Integer timestampCount;
+    EditText delete_value;
 
     List<Timestamp> Timestamps = new ArrayList<Timestamp>();
     List<Timestamp> addableTimestamps = new ArrayList<Timestamp>();
@@ -52,6 +54,7 @@ public class MyActivity extends ActionBarActivity {
         dbHandler = new DatabaseHandler(getApplicationContext());
         dbHandler.getWritableDatabase();
         timestamplist_view = (ListView) findViewById(R.id.listView);
+        delete_value = (EditText) findViewById(R.id.edit_deletenum);
 
         //punchout_time = time_out_pick.getCurrentHour().toString()+":"+time_out_pick.getCurrentMinute().toString();
         //punchin_time = time_in_pick.getCurrentHour().toString()+":"+time_in_pick.getCurrentMinute().toString();
@@ -132,6 +135,16 @@ public class MyActivity extends ActionBarActivity {
             }
         });
 
+        final Button deletethisbtn = (Button) findViewById(R.id.btn_deleteone);
+
+        deletethisbtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                dbHandler.deleteTimestamp(String.valueOf(delete_value.getText()));
+                Toast.makeText(getApplicationContext(), "Item Deleted!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         addableTimestamps = dbHandler.getAllTimestamps();
         timestampCount = dbHandler.getTimestampsCount();
 
@@ -151,7 +164,7 @@ public class MyActivity extends ActionBarActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(getApplicationContext(), "DATA CLEARED!", Toast.LENGTH_SHORT).show();
                         for (int i=0; i<timestampCount; i++) {
-                            dbHandler.deleteTimestamp(addableTimestamps.get(i));
+                            dbHandler.deleteTimestamp(String.valueOf(addableTimestamps.get(i).get_id()));
                         }
                     }
                 })
@@ -210,14 +223,16 @@ public class MyActivity extends ActionBarActivity {
 
             Timestamp current_contact = Timestamps.get(position);
 
-            TextView name = (TextView) view.findViewById(R.id.day_of_week_Label);
-            name.setText(current_contact.get_day());
-            TextView phone = (TextView) view.findViewById(R.id.start_time_Label);
-            phone.setText(current_contact.get_start());
-            TextView email = (TextView) view.findViewById(R.id.end_time_Label);
-            email.setText(current_contact.get_end());
-            TextView address = (TextView) view.findViewById(R.id.total_hours_Label);
-            address.setText(current_contact.get_hours());
+            TextView id = (TextView) view.findViewById(R.id.id_label);
+            id.setText("("+current_contact.get_id()+")");
+            TextView day = (TextView) view.findViewById(R.id.day_of_week_Label);
+            day.setText(current_contact.get_day());
+            TextView start = (TextView) view.findViewById(R.id.start_time_Label);
+            start.setText(current_contact.get_start());
+            TextView end = (TextView) view.findViewById(R.id.end_time_Label);
+            end.setText(current_contact.get_end());
+            TextView total_hours = (TextView) view.findViewById(R.id.total_hours_Label);
+            total_hours.setText(current_contact.get_hours());
 
             return view;
         }

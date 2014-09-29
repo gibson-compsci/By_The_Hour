@@ -2,42 +2,63 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clickable="false">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="DAY"
-        android:id="@+id/day_of_week_Label"
-        android:textStyle="bold"
-        android:textSize="70px"
-        android:layout_margin="10px" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="start"
-        android:id="@+id/start_time_Label"
-        android:textSize="40px"
-        android:layout_margin="10px" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="DAY"
+            android:id="@+id/day_of_week_Label"
+            android:textStyle="bold"
+            android:textSize="70px"
+            android:layout_margin="10px" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="end"
-        android:id="@+id/end_time_Label"
-        android:textSize="40px"
-        android:layout_margin="10px" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="start"
+            android:id="@+id/start_time_Label"
+            android:textSize="40px"
+            android:layout_margin="10px"
+            android:layout_below="@+id/day_of_week_Label" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="hours"
-        android:id="@+id/total_hours_Label"
-        android:textSize="40px"
-        android:layout_margin="10px" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="end"
+            android:id="@+id/end_time_Label"
+            android:textSize="40px"
+            android:layout_margin="10px"
+            android:layout_below="@+id/start_time_Label" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="hours"
+            android:id="@+id/total_hours_Label"
+            android:textSize="40px"
+            android:layout_margin="10px"
+            android:layout_below="@+id/end_time_Label" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="()"
+            android:id="@+id/id_label"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/day_of_week_Label"
+            android:layout_toEndOf="@+id/day_of_week_Label"
+            android:textSize="70px"
+            android:layout_marginLeft="20px" />
+    </RelativeLayout>
+
 </LinearLayout>

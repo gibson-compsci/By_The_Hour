@@ -67,9 +67,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return timestamp;
     }
 
-    public void deleteTimestamp(Timestamp timestamp) {
+    public void deleteTimestamp(String id) {
         SQLiteDatabase db = getWritableDatabase();
-        db.delete(TABLE_TIMES, KEY_ID + "=?", new String[] {String.valueOf(timestamp.get_id())});
+        db.delete(TABLE_TIMES, KEY_ID + "=?", new String[] {id});
         db.close();
     }
 
