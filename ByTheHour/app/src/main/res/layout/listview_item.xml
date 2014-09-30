@@ -26,8 +26,9 @@
             android:text="start"
             android:id="@+id/start_time_Label"
             android:textSize="40px"
-            android:layout_margin="10px"
-            android:layout_below="@+id/day_of_week_Label" />
+            android:layout_alignTop="@+id/textView_start"
+            android:layout_toRightOf="@+id/textView_start"
+            android:layout_toEndOf="@+id/textView_start" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,8 +37,10 @@
             android:text="end"
             android:id="@+id/end_time_Label"
             android:textSize="40px"
-            android:layout_margin="10px"
-            android:layout_below="@+id/start_time_Label" />
+            android:layout_toEndOf="@+id/textView_end"
+            android:layout_below="@+id/textView_start"
+            android:layout_alignLeft="@+id/start_time_Label"
+            android:layout_alignStart="@+id/start_time_Label" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,19 +49,41 @@
             android:text="hours"
             android:id="@+id/total_hours_Label"
             android:textSize="40px"
-            android:layout_margin="10px"
-            android:layout_below="@+id/end_time_Label" />
+            android:layout_toEndOf="@+id/day_of_week_Label"
+            android:layout_below="@+id/textView_end"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="()"
             android:id="@+id/id_label"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/day_of_week_Label"
-            android:layout_toEndOf="@+id/day_of_week_Label"
-            android:textSize="70px"
-            android:layout_marginLeft="20px" />
+            android:textSize="50px"
+            android:layout_alignTop="@+id/day_of_week_Label"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Time: "
+            android:id="@+id/textView_start"
+            android:textSize="40px"
+            android:layout_below="@+id/day_of_week_Label"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End Time: "
+            android:id="@+id/textView_end"
+            android:textSize="40px"
+            android:layout_below="@+id/textView_start"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
     </RelativeLayout>
 
 </LinearLayout>
